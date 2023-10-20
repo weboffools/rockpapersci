@@ -105,16 +105,16 @@ function playRound(playerSelection, computerSelection) {
     
 }
 
-function game() {
-  let player = 0;
-  let computer = 0;
-  for (let i = 0; i < 5000; i++) {
-    let [message, p, c] = playRound(playerSelection, getComputerChoice());
-    player += p;
-    computer += c;
-  }
-  console.log("Final Score: Player: " + player + " Computer: " + computer + ".")
-}
+//function game() {
+//  let player = 0;
+//  let computer = 0;
+//  for (let i = 0; i < 5; i++) {
+//    let [message, p, c] = playRound(playerSelection, getComputerChoice());
+//    player += p;
+//    computer += c;
+//  }
+//  console.log("Final Score: Player: " + player + " Computer: " + computer + ".")
+//}
 
 game()
 
