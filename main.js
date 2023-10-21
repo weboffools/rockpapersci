@@ -1,7 +1,19 @@
 // Rock Paper Scissors
 //
 
-var playerSelection = "rock";
+let playerPoints = 0;
+let computerPoints = 0;
+
+const buttons = document.querySelectorAll('.choiceButton');
+let playerSelection = '';
+
+buttons.forEach((button) => {
+  button.addEventListener('click', function (e) {
+    playerSelection = e.target.innerHTML.toLowerCase(); 
+    game();
+  });
+});
+
 
 function getComputerChoice() {
 
@@ -20,101 +32,54 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-  let player = playerSelection.toLowerCase();
-  let winningChoice;
-  let losingChoice;
+  let player = playerSelection;
   let computer = computerSelection;
-  let winLose;
-  
-  let messageTwo = "It's a draw! Play again?";
-  let message;
-  let playerPoints = 0;
-  let computerPoints = 0;
+  let results = [playerPoints, computerPoints];
 
 
   switch (player) {
     case 'rock':
-      
       if (computer === 'scissors') {
-        winningChoice = player;
-        losingChoice = computer;
-        winLose = 'win';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         playerPoints += 1;
-        return [message, playerPoints, computerPoints]
+        return results;
       } 
       else if (computer === 'paper') {
-        winningChoice = computer;
-        losingChoice = player
-        winLose = 'lose';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         computerPoints += 1;
-        return [message, playerPoints, computerPoints]
+        return results;
       }
       else {
-        message = messageTwo;
-        return [message, playerPoints, computerPoints]
-
+        return results;
       }
     case 'paper':
       if (computer === 'rock') {
-        winningChoice = player;
-        losingChoice = computer;
-        winLose = 'win';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         playerPoints += 1;
-        return [message, playerPoints, computerPoints]
-
+        return results;
       } 
       else if (computer === 'scissors') {
-        winningChoice = computer;
-        losingChoice = player;
-        winLose = 'lose';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         computerPoints += 1;
-        return [message, playerPoints, computerPoints]
+        return results;
       }
       else {
-        message = messageTwo;
-        return [message, playerPoints, computerPoints]
-
+        return results;
       }
     case 'scissors':
       if (computer === 'paper') {
-        winningChoice = player;
-        losingChoice = computer;
-        winLose = 'win';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         playerPoints += 1;
-        return [message, playerPoints, computerPoints]
-
+        return results;
       } 
       else if (computer === 'rock') {
-        winningChoice = computer;
-        losingChoice = player;
-        winLose = 'lose';
-        message = `You ${winLose}, ${winningChoice} beats ${losingChoice}!`
         computerPoints += 1;
-        return [message, playerPoints, computerPoints]
+        return results;
       }
       else {
-        message = messageTwo;
-        return [message, playerPoints, computerPoints]
+        return results;
       }
   }
     
 }
 
-//function game() {
-//  let player = 0;
-//  let computer = 0;
-//  for (let i = 0; i < 5; i++) {
-//    let [message, p, c] = playRound(playerSelection, getComputerChoice());
-//    player += p;
-//    computer += c;
-//  }
-//  console.log("Final Score: Player: " + player + " Computer: " + computer + ".")
-//}
+function game() {
 
-game()
-
+    let [p, c] = playRound(playerSelection, getComputerChoice());
+    console.log(p, c);
+}
